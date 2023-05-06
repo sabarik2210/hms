@@ -12,8 +12,10 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import AC from '../../assets/images/pic1.png'
-
+import { useContext } from 'react';
+import { loginContext } from '../../App';
 export default function AccountMenu() {
+    const {login,setLogin}=useContext(loginContext)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -22,6 +24,9 @@ export default function AccountMenu() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const logOut = () => {
+        setLogin(false);
+    }
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -93,7 +98,7 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={logOut}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
