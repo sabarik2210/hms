@@ -1,28 +1,25 @@
-import React, { useEffect } from 'react'
-
-
-
-import { BrowserRouter, Route } from 'react-router-dom'
+import React, {useState, useEffect } from 'react'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import SideBarNew from '../Sidebar/SidebarNew'
-import Routes from '../Routes'
-
-
-
+import Routepath from '../Routes1'
+import LoginNew from '../Login/LoginNew';
+import { useContext } from 'react';
+import { loginContext } from '../../App';
 const Layout = () => {
 
-
+    const {login, setLogin} = useContext(loginContext);
     return (
-        <BrowserRouter>
-            <Route render={(props) => (
-                <div className="layout__content">
-                    <SideBarNew />
-                    <div className="layout__content-main">
-                        <Routes />
-                    </div>
+<>
+            {login ? <div className="layout__content">
+                <SideBarNew />
+                <div className="layout__content-main">
+                    <Routepath />
                 </div>
-
-            )} />
-        </BrowserRouter>
+            </div> :
+                <Routes>
+                    <Route path='/' element={<LoginNew/>} />
+                </Routes>}
+        </>
     )
 }
 

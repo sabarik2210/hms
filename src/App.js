@@ -1,16 +1,24 @@
-
-import './App.css';
-import Layout from './Components/Layout/Layout';
-
+import "./App.css";
+import Layout from "./Components/Layout/Layout";
+import { BrowserRouter } from "react-router-dom";
+import { useContext, useState } from "react";
+import { createContext } from "react";
+export const loginContext = createContext();
 function App() {
+  const [login, setLogin] = useState(false);
+  const setlog = () => {
+    setLogin(true);
+  };
   return (
-    <div className='App'>
-      <div className='side'>
-        <Layout />
-
-      </div>
-
-    </div>
+    <loginContext.Provider value={{ login, setLogin }}>
+      <BrowserRouter>
+        <div className="App">
+          <div className="side">
+            <Layout />
+          </div>
+        </div>
+      </BrowserRouter>
+    </loginContext.Provider>
   );
 }
 

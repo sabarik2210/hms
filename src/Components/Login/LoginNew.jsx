@@ -4,10 +4,10 @@ import { Button, Card, CardContent, Grid, TextField, Typography } from '@mui/mat
 import HMS from '../../assets/images/banner.png'
 import '../Login/Login.css'
 import Layout from '../Layout/Layout';
-
-
+import { loginContext } from '../../App';
+import { useContext } from 'react';
 function LoginNew() {
-
+    const { login, setLogin } = useContext(loginContext);
     const users = [
         {
             username: 'hospital',
@@ -26,11 +26,12 @@ function LoginNew() {
         const usercheck = users.map(user => (user.username === uname && user.password === pass)
         )
         if (usercheck) {
-            console.log("Login successful");
-            <Layout />
+            setLogin(true)
+            
         } else {
-            console.log("Wrong password or username");
+            setLogin(false)
         }
+
 
     }
 
