@@ -6,9 +6,6 @@ import { createContext } from "react";
 export const loginContext = createContext();
 function App() {
   const [login, setLogin] = useState(false);
-  const setlog = () => {
-    setLogin(true);
-  };
   return (
     <loginContext.Provider value={{ login, setLogin }}>
       <BrowserRouter>

@@ -6,7 +6,6 @@ import LoginNew from '../Login/LoginNew';
 import { useContext } from 'react';
 import { loginContext } from '../../App';
 const Layout = () => {
-
     const {login, setLogin} = useContext(loginContext);
     return (
 <>

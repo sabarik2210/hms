@@ -3,33 +3,26 @@ import React, { useState } from 'react';
 import { Button, Card, CardContent, Grid, TextField, Typography } from '@mui/material';
 import HMS from '../../assets/images/banner.png'
 import '../Login/Login.css'
-import Layout from '../Layout/Layout';
 import { loginContext } from '../../App';
 import { useContext } from 'react';
 function LoginNew() {
     const { login, setLogin } = useContext(loginContext);
     const users = [
         {
-            username: 'hospital',
-            password: '12345'
+            username: 'admin',
+            password: 'admin'
         }
     ];
-    const [data, setData] = useState({
-        username: '',
-        password: ''
-    });
+    const [username, setUserName] = useState('');
+    const [password, setPasword] = useState('');
 
-    // console.log(data);
-
-    const { uname, pass } = data;
     const checkUser = () => {
-        const usercheck = users.map(user => (user.username === uname && user.password === pass)
-        )
+        const usercheck = users.find((user) => (user.username === username && user.password === password))
+        console.log(usercheck)
         if (usercheck) {
-            setLogin(true)
-            
+            setLogin(true) 
         } else {
-            setLogin(false)
+alert("Wrong username or password")
         }
 
 
@@ -42,7 +35,6 @@ function LoginNew() {
     const handleSubmit = (e) => {
         e.preventDefault();
         checkUser();
-        console.log(checkUser());
     }
 
     return (
@@ -62,11 +54,11 @@ function LoginNew() {
                                 <TextField
                                     type="text"
                                     name="username"
-                                    value={uname}
+                                    value={username}
                                     size='small'
                                     placeholder="Username"
                                     aria-describedby="inputGroupPrepend2" required
-                                    onChange={(e) => setData(e.target.value)} />
+                                    onChange={(e) => setUserName(e.target.value)} />
                                 {/*                                 
                                 {errors.email && <span style={{ color: "red" }}>
                                     *Email* is mandatory </span>} */}
@@ -75,10 +67,10 @@ function LoginNew() {
                                     type="password"
                                     name="password"
                                     size='small'
-                                    value={pass}
+                                    value={password}
                                     placeholder="Password"
                                     aria-describedby="inputGroupPrepend2" required
-                                    onChange={(e) => setData(e.target.value)} />
+                                    onChange={(e) => setPasword(e.target.value)} />
                                 <Button type='submit' sx={{ background: '#2daab8', color: '#fff', "&:hover": { backgroundColor: "#2daab8" } }} fullWidth size="small">LogIn</Button>
 
                             </CardContent>
