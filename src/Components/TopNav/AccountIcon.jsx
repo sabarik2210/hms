@@ -15,7 +15,7 @@ import AC from '../../assets/images/pic1.png'
 import { useContext } from 'react';
 import { loginContext } from '../../App';
 export default function AccountMenu() {
-    const {login,setLogin}=useContext(loginContext)
+    const { login, setLogin } = useContext(loginContext)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -26,6 +26,7 @@ export default function AccountMenu() {
     };
     const logOut = () => {
         setLogin(false);
+        localStorage.clear();
     }
     return (
         <React.Fragment>

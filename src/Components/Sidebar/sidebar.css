@@ -23,6 +23,14 @@
     padding: 0 20px;
 }
 
+.sidebar_module:hover {
+    color: #2daab8;
+}
+
+.sidebar_module:active {
+    color: #2daab8;
+}
+
 .sidebar__item-inner {
     padding: 15px 25px;
     display: flex;
